@@ -15,8 +15,11 @@ func destroy_game_object(death_particle: bool = false) -> void:
 	if (death_particle):
 		if (has_death_particle_component()):
 			get_death_particle_component().trigger()
-	get_parent().remove_child(self)
-	self.queue_free()
+	if (get_parent() != null):
+		get_parent().remove_child(self)
+		self.queue_free()
+	else:
+		print(name)
 
 func has_hitbox() -> bool:
 	return has_node(HITBOX_COMPONENT_PATH)
