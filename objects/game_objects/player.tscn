@@ -20,24 +20,38 @@ texture = ExtResource("2_p58hc")
 script = ExtResource("3_ln2w7")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="HitboxComponent"]
-polygon = PackedVector2Array(-8, 8, -8, 1, -8, 1, -2, -4, -1, -8, 1, -8, 2, -4, 8, 1, 8, 8)
+polygon = PackedVector2Array(-9, 13, -16, 8, -5, -3, -1, -16, 1, -16, 5, -3, 16, 8, 9, 13)
 
 [node name="AttackComponent" type="Node2D" parent="."]
 script = ExtResource("4_6wbnq")
 firing_mode = 1
 
-[node name="WeaponLeft" type="Node2D" parent="AttackComponent"]
-position = Vector2(-8, -1)
+[node name="WeaponLeftA" type="Node2D" parent="AttackComponent"]
+position = Vector2(-13, 0)
 script = ExtResource("5_dr6pd")
 projectile = &"PlayerProjectile"
-cooldown_frames = 10
+cooldown_frames = 20
 
-[node name="WeaponRight" type="Node2D" parent="AttackComponent"]
-position = Vector2(7, -1)
+[node name="WeaponLeftB" type="Node2D" parent="AttackComponent"]
+position = Vector2(-8, -5)
 script = ExtResource("5_dr6pd")
 projectile = &"PlayerProjectile"
-cooldown_frames = 10
+cooldown_frames = 20
 firing_index = 1
+
+[node name="WeaponRightA" type="Node2D" parent="AttackComponent"]
+position = Vector2(7, -5)
+script = ExtResource("5_dr6pd")
+projectile = &"PlayerProjectile"
+cooldown_frames = 20
+firing_index = 2
+
+[node name="WeaponRightB" type="Node2D" parent="AttackComponent"]
+position = Vector2(12, 0)
+script = ExtResource("5_dr6pd")
+projectile = &"PlayerProjectile"
+cooldown_frames = 20
+firing_index = 3
 
 [node name="PlayerController" type="Node" parent="."]
 script = ExtResource("5_xv61v")
@@ -48,4 +62,4 @@ max_health = 50
 
 [node name="DeathParticleComponent" type="Node2D" parent="."]
 script = ExtResource("8_xo4vj")
-code = &"Explosion"
+code = &"ExplosionBig"

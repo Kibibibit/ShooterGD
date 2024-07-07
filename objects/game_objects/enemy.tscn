@@ -45,4 +45,4 @@ script = ExtResource("7_cc5ub")
 
 [node name="DeathParticleComponent" type="Node2D" parent="."]
 script = ExtResource("8_3tmvj")
-code = &"Explosion"
+code = &"ExplosionBig"

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://brf144b5gg235"]
+
+[ext_resource type="Script" path="res://objects/game_object.gd" id="1_5opq5"]
+[ext_resource type="Texture2D" uid="uid://hu0fw2crsybt" path="res://assets/asteroid.png" id="2_omc3e"]
+[ext_resource type="Script" path="res://objects/components/hitbox_component.gd" id="3_45366"]
+[ext_resource type="Script" path="res://objects/components/health_component.gd" id="4_xc3ws"]
+[ext_resource type="Script" path="res://objects/components/death_particle_component.gd" id="5_q424h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pebfk"]
+radius = 8.0
+
+[node name="Asteroid" type="Node2D"]
+script = ExtResource("1_5opq5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_omc3e")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3_45366")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_pebfk")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_xc3ws")
+max_health = 50
+
+[node name="DeathParticleComponent" type="Node2D" parent="."]
+script = ExtResource("5_q424h")
+code = &"Explosion"
