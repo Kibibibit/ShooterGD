@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjhqdep7sbj8x"]
+
+[ext_resource type="PackedScene" uid="uid://klis63ohmr7m" path="res://objects/game_objects/player.tscn" id="1_fwr8y"]
+[ext_resource type="Script" path="res://objects/projectile_spawner.gd" id="2_tlssx"]
+[ext_resource type="PackedScene" uid="uid://wahxxv5d06nx" path="res://objects/game_objects/enemy.tscn" id="3_fl0qn"]
+[ext_resource type="Script" path="res://objects/death_particle_spawner.gd" id="4_jd7sp"]
+
+[node name="Main" type="Node2D"]
+texture_filter = 1
+
+[node name="ProjectileSpawner" type="Node2D" parent="."]
+script = ExtResource("2_tlssx")
+
+[node name="PlayerParent" type="Node2D" parent="."]
+
+[node name="Player" parent="PlayerParent" instance=ExtResource("1_fwr8y")]
+position = Vector2(438, 309)
+
+[node name="EnemyParent" type="Node2D" parent="."]
+
+[node name="Enemy" parent="EnemyParent" instance=ExtResource("3_fl0qn")]
+position = Vector2(469, 149)
+
+[node name="Enemy2" parent="EnemyParent" instance=ExtResource("3_fl0qn")]
+position = Vector2(406, 148)
+
+[node name="Enemy3" parent="EnemyParent" instance=ExtResource("3_fl0qn")]
+position = Vector2(549, 145)
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("4_jd7sp")

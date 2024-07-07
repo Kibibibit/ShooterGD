@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://wahxxv5d06nx"]
+
+[ext_resource type="Script" path="res://objects/game_object.gd" id="1_3hfag"]
+[ext_resource type="Texture2D" uid="uid://bgndmc3cwefmx" path="res://assets/enemy.png" id="2_amjd2"]
+[ext_resource type="Script" path="res://objects/components/hitbox_component.gd" id="3_o6tt0"]
+[ext_resource type="Script" path="res://objects/components/attack_component.gd" id="4_eqyum"]
+[ext_resource type="Script" path="res://objects/components/weapon_point_component.gd" id="5_my3lm"]
+[ext_resource type="Script" path="res://objects/components/health_component.gd" id="6_j6e8i"]
+[ext_resource type="Script" path="res://objects/components/basic_enemy_controller.gd" id="7_cc5ub"]
+[ext_resource type="Script" path="res://objects/components/death_particle_component.gd" id="8_3tmvj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eh5ip"]
+size = Vector2(16, 16)
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_3hfag")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_amjd2")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_o6tt0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_eh5ip")
+
+[node name="AttackComponent" type="Node2D" parent="."]
+script = ExtResource("4_eqyum")
+
+[node name="WeaponPointComponent" type="Node2D" parent="AttackComponent"]
+position = Vector2(0, 2)
+script = ExtResource("5_my3lm")
+projectile = &"EnemyProjectile"
+cooldown_frames = 30
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("6_j6e8i")
+max_health = 10
+
+[node name="BasicEnemyController" type="Node" parent="."]
+script = ExtResource("7_cc5ub")
+
+[node name="DeathParticleComponent" type="Node2D" parent="."]
+script = ExtResource("8_3tmvj")
+code = &"Explosion"

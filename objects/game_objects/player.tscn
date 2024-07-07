@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://klis63ohmr7m"]
+
+[ext_resource type="Script" path="res://objects/game_object.gd" id="1_bou1i"]
+[ext_resource type="Texture2D" uid="uid://btvi81tdx4hpt" path="res://assets/player.png" id="2_p58hc"]
+[ext_resource type="Script" path="res://objects/components/hitbox_component.gd" id="3_ln2w7"]
+[ext_resource type="Script" path="res://objects/components/attack_component.gd" id="4_6wbnq"]
+[ext_resource type="Script" path="res://objects/components/weapon_point_component.gd" id="5_dr6pd"]
+[ext_resource type="Script" path="res://objects/components/player_controller.gd" id="5_xv61v"]
+[ext_resource type="Script" path="res://objects/components/health_component.gd" id="7_mffs5"]
+[ext_resource type="Script" path="res://objects/components/death_particle_component.gd" id="8_xo4vj"]
+
+[node name="Player" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_bou1i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_p58hc")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("3_ln2w7")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="HitboxComponent"]
+polygon = PackedVector2Array(-8, 8, -8, 1, -8, 1, -2, -4, -1, -8, 1, -8, 2, -4, 8, 1, 8, 8)
+
+[node name="AttackComponent" type="Node2D" parent="."]
+script = ExtResource("4_6wbnq")
+firing_mode = 1
+
+[node name="WeaponLeft" type="Node2D" parent="AttackComponent"]
+position = Vector2(-8, -1)
+script = ExtResource("5_dr6pd")
+projectile = &"PlayerProjectile"
+cooldown_frames = 10
+
+[node name="WeaponRight" type="Node2D" parent="AttackComponent"]
+position = Vector2(7, -1)
+script = ExtResource("5_dr6pd")
+projectile = &"PlayerProjectile"
+cooldown_frames = 10
+firing_index = 1
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("5_xv61v")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("7_mffs5")
+max_health = 50
+
+[node name="DeathParticleComponent" type="Node2D" parent="."]
+script = ExtResource("8_xo4vj")
+code = &"Explosion"

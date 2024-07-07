@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi0atfkebkt23"]
+
+[ext_resource type="Script" path="res://objects/game_object.gd" id="1_y6pc1"]
+[ext_resource type="Texture2D" uid="uid://couxrb3ix5g6k" path="res://assets/enemy_bullet.png" id="2_aipsx"]
+[ext_resource type="Script" path="res://objects/components/hurtbox_component.gd" id="3_oa45y"]
+[ext_resource type="Script" path="res://objects/components/projectile_component.gd" id="4_ybvtf"]
+[ext_resource type="Script" path="res://objects/components/death_particle_component.gd" id="5_x8udq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c6t01"]
+radius = 3.0
+
+[node name="EnemyProjectile" type="Node2D"]
+script = ExtResource("1_y6pc1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 7)
+texture = ExtResource("2_aipsx")
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+script = ExtResource("3_oa45y")
+damage = 1
+destroy_on_hit = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, 11)
+shape = SubResource("CircleShape2D_c6t01")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="ProjectileComponent" type="Node" parent="."]
+script = ExtResource("4_ybvtf")
+direction = Vector2(0, 1)
+speed = 100.0
+
+[node name="DeathParticleComponent" type="Node2D" parent="."]
+position = Vector2(0, 11)
+script = ExtResource("5_x8udq")
+code = &"EnemyBulletBurst"

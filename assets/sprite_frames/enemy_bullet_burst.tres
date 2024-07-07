@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://cnt3xxcpvxg70"]
+
+[ext_resource type="Texture2D" uid="uid://bg1pyc5uelyet" path="res://assets/enemy_bullet_burst.png" id="1_uywqm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_562db"]
+atlas = ExtResource("1_uywqm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hwyc"]
+atlas = ExtResource("1_uywqm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwp2w"]
+atlas = ExtResource("1_uywqm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtbvj"]
+atlas = ExtResource("1_uywqm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru3gc"]
+atlas = ExtResource("1_uywqm")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df78a"]
+atlas = ExtResource("1_uywqm")
+region = Rect2(80, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_562db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hwyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwp2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtbvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru3gc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df78a")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
